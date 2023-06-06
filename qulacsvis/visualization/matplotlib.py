@@ -521,3 +521,4 @@ class MPLCircuitlDrawer:
                 (xpos + TARGET_QUBIT_MARK_SIZE, to_ypos - TARGET_QUBIT_MARK_SIZE),
                 (xpos - TARGET_QUBIT_MARK_SIZE, to_ypos + TARGET_QUBIT_MARK_SIZE),
             )
+        self._control_bits(gate.control_bit_infos, xy)
