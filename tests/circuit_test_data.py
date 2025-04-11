@@ -21,6 +21,7 @@ try:
         create_shirai_ansatz,
         create_yzcx_ansatz,
     )
+
     HAS_SKQULACS = True
 
     def skqulacs_qcl_ansatz() -> QuantumCircuit:
@@ -31,14 +32,12 @@ try:
         circuit: QuantumCircuit = ansatz._circuit
         return circuit
 
-
     def skqulacs_farhi_neven_ansatz() -> QuantumCircuit:
         n_qubit = 4
         c_depth = 2
         ansatz = create_farhi_neven_ansatz(n_qubit, c_depth)
         circuit: QuantumCircuit = ansatz._circuit
         return circuit
-
 
     def skqulacs_farhi_neven_watle_ansatz() -> QuantumCircuit:
         n_qubit = 4
@@ -47,12 +46,10 @@ try:
         circuit: QuantumCircuit = ansatz._circuit
         return circuit
 
-
     def skqulacs_ibm_embedding_circuit() -> QuantumCircuit:
         n_qubit = 4
         circuit: QuantumCircuit = create_ibm_embedding_circuit(n_qubit)._circuit
         return circuit
-
 
     def skqulacs_shirai_ansatz() -> QuantumCircuit:
         n_qubit = 4
@@ -61,14 +58,12 @@ try:
         circuit: QuantumCircuit = ansatz._circuit
         return circuit
 
-
     def skqulacs_npqc_ansatz() -> QuantumCircuit:
         n_qubit = 4
         c_depth = 2
         ansatz = create_npqc_ansatz(n_qubit, c_depth)
         circuit: QuantumCircuit = ansatz._circuit
         return circuit
-
 
     def skqulacs_yzcx_ansatz() -> QuantumCircuit:
         n_qubit = 4
@@ -77,13 +72,13 @@ try:
         circuit: QuantumCircuit = ansatz._circuit
         return circuit
 
-
     def skqulacs_qcnn_ansatz() -> QuantumCircuit:
         n_qubit = 8
         ansatz = create_qcnn_ansatz(n_qubit)
         circuit: QuantumCircuit = ansatz._circuit
         return circuit
-except:
+
+except ImportError:
     HAS_SKQULACS = False
 
 
@@ -117,7 +112,9 @@ def load_circuit_data() -> Dict[str, QuantumCircuit]:
     if HAS_SKQULACS:
         circuits["skqulacs_qcl_ansatz"] = skqulacs_qcl_ansatz()
         circuits["skqulacs_farhi_neven_ansatz"] = skqulacs_farhi_neven_ansatz()
-        circuits["skqulacs_farhi_neven_watle_ansatz"] = skqulacs_farhi_neven_watle_ansatz()
+        circuits[
+            "skqulacs_farhi_neven_watle_ansatz"
+        ] = skqulacs_farhi_neven_watle_ansatz()
         circuits["skqulacs_ibm_embedding_circuit"] = skqulacs_ibm_embedding_circuit()
         circuits["skqulacs_shirai_ansatz"] = skqulacs_shirai_ansatz()
         circuits["skqulacs_npqc_ansatz"] = skqulacs_npqc_ansatz()
